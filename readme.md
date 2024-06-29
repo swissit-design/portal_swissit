@@ -5,7 +5,7 @@
 - FR, DE, EN
 
 # App design
-- Frontend -> React, Tailwind, thailadmin, Daisyui
+- Frontend -> React with Vite - might use Tailwind, thailadmin, Daisyui for styling
 - Backend -> Django rest API for CRUD - create, retrieve, update, delete
 - Database -> trying MongoDB
 - Email with Zoho
@@ -23,4 +23,18 @@ pip install poetry
 ```bash
 poetry install
 poetry add django # to add dependency
+```
+
+# Frontend Setup and Installation
+1. install React front end
+```bash
+npm create vite@latest frontend -- --template react
+cd frontend/
+npm install axios react-router-dom jwt-decode
+```
+2. Axios will help adding headers when calling api from django. All constants are in constants.js
+
+3. run the dev server 
+```bash
+npm run dev
 ```
