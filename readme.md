@@ -7,7 +7,7 @@
 # App design
 - Frontend -> React with Vite - might use Tailwind, thailadmin, Daisyui for styling
 - Backend -> Django rest API for CRUD - create, retrieve, update, delete
-- Database -> trying MongoDB
+- Database -> postgresSQL from neon https://console.neon.tech/app/projects free tier
 - Email with Zoho
 - Storage of files with Azure Docs
 - Deployment- Vercel or Azure, will test it accordingly - Choreo also possible
@@ -32,9 +32,22 @@ npm create vite@latest frontend -- --template react
 cd frontend/
 npm install axios react-router-dom jwt-decode
 ```
-2. Axios will help adding headers when calling api from django. All constants are in constants.js
-
-3. run the dev server 
+1. Axios will help adding headers when calling api from django. All constants are in constants.js
+1. We will be using Tailwind and Daisyui 
+```bash
+# https://tailwindcss.com/docs/guides/vite
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+1. run the dev server 
 ```bash
 npm run dev
+```
+1. To change font
+- go to google font and paste the whole ```<head>``` to index.html
+- change tailwind.config.js
+```javascript
+fontFamily: {
+'sans': ['"Playwrite US Modern"', ...defaultTheme.fontFamily.sans], //set main font
+},
 ```
