@@ -14,4 +14,11 @@ export default {
     },
   },
   plugins: [require('daisyui','@tailwindcss/forms')],
+  /// removing dark mode on Tailwind
+  darkMode: 'false',
+  /// adding theme on daisyui
+  daisyui: {
+    themes: ["cupcake"],
+  },
+
 }

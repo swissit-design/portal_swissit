@@ -10,7 +10,7 @@ function Form({ route, method }) {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const name = method === "login" ? "Login" : "Register";
+    const name = method === "login" ? "Sign in to your account" : "Register new user";
 
     const handleSubmit = async (e) => {
         setLoading(true);
@@ -42,12 +42,11 @@ function Form({ route, method }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                 Sign in to your account
+               {name}
                </h2>
              </div>
      
              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-             <h1>{name}</h1>
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
@@ -95,14 +94,18 @@ function Form({ route, method }) {
                  </div>
      
                  <div>
-                 {loading && <LoadingIndicator />}
+                  {loading ? 
+                  (<button
+                     type="submit"
+                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                   >
+                      <span className="loading loading-spinner loading-md"></span></button>
+                    )  : 
                    <button
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                    >
-                     Sign in
-                     {name}
-                   </button>
+                     {name}</button>}
                  </div>
                </form>
              </div>
