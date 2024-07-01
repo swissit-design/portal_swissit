@@ -24,6 +24,7 @@ pip install poetry
 poetry install
 poetry add django # to add dependency
 ```
+2. Adding the api_test.rest to test the request when authentication and others - make sure you install the extensions in VS code called REST CLIENT.
 
 # Frontend Setup and Installation
 1. install React front end

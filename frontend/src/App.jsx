@@ -5,6 +5,8 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Sidebar from './components/Sidebar';
+import sidebarData from './assets/sidebarData';
 
 function Logout() {
   localStorage.clear()
@@ -19,6 +21,10 @@ function RegisterAndLogout() {
 function App() {
   return (
     <BrowserRouter>
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar sidebarData={sidebarData}/>
+      <div className="flex flex-col ml-64 w-full">
+      <div className="flex-1 overflow-y-auto p-6">
       <Routes>
         <Route
           path="/"
@@ -33,6 +39,9 @@ function App() {
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
+      </div>
+      </div>
+      </div>
     </BrowserRouter>
   )
 }
