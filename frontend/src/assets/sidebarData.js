@@ -1,6 +1,6 @@
 // src/sidebarData.js
 /// icon from https://react-icons.github.io/react-icons/search/#q=home
-import { CiHome } from "react-icons/ci";
+import { CiHome, CiLogout } from "react-icons/ci";
 import * as AiIcons from 'react-icons/ai';
 
   
@@ -24,6 +24,12 @@ import * as AiIcons from 'react-icons/ai';
       name: 'Contact',
       icon: AiIcons.AiOutlineContacts,
       link: '/contact',
+      subItems: [],
+    },
+    {
+      name: 'Log out',
+      icon: CiLogout,
+      link: '/logout',
       subItems: [],
     },
   ];

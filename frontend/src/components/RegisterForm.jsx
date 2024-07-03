@@ -1,41 +1,33 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
-function Form({ route, method }) {
+function RegisterForm({ route, method }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const name = method === "login" ? "Sign in to your account" : "Register new user";
-
     const handleSubmit = async (e) => {
-        setLoading(true);
         e.preventDefault();
-
-        const res = await api.post(route, { username, password });
-        const data = res.data;
+        setLoading(true); // Start loading spinner
 
         try {
-            if (data.success == true) {
-              console.log(data.message)
-              setLoading(true);
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-                navigate("/")
-            } else {
-              console.log('wrong passowrd')
-                console.log(data.message)
-                setLoading(false)
-            }
+            const response = await api.post(route, { username, password });
+            navigate("/login")
+            console.log('Successfully Registered')
+            toast.success('Successfully Registered!');
         } catch (error) {
-          console.log(data.message)
-            alert(error)
+            console.log(error)
+            setError('Invalid username or password - User already exists.');
+            toast.error('Invalid username or password - User already exists.');
         } finally {
-            setLoading(false)
+            setLoading(false); // End loading
         }
     };
+
 
     return (
         <div>
@@ -47,7 +39,7 @@ function Form({ route, method }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               {name}
+               Register a new user
                </h2>
              </div>
      
@@ -67,7 +59,7 @@ function Form({ route, method }) {
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
                        placeholder="Email"
-                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       className="shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      />
                    </div>
                  </div>
@@ -77,11 +69,6 @@ function Form({ route, method }) {
                      <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                        Password
                      </label>
-                     <div className="text-sm">
-                       <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                         Forgot password?
-                       </a>
-                     </div>
                    </div>
                    <div className="mt-2">
                      <input
@@ -93,12 +80,13 @@ function Form({ route, method }) {
                        value={password}
                        onChange={(e) => setPassword(e.target.value)}
                        placeholder="Password"
-                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       className={`shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${error ? 'border-red-500 bg-red-100' : ''}`}
                      />
                    </div>
                  </div>
      
                  <div>
+                 {error && <p>{error}</p>}
                   {loading ? 
                   (<button
                      type="submit"
@@ -110,7 +98,7 @@ function Form({ route, method }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                    >
-                     {name}</button>}
+                     Register</button>}
                  </div>
                </form>
              </div>
@@ -119,4 +107,4 @@ function Form({ route, method }) {
     );
 }
 
-export default Form
+export default RegisterForm
