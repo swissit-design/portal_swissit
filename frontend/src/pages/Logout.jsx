@@ -10,10 +10,12 @@ function Logout({onLogout}) {
       // Trigger logout action from parent component
       onLogout()
   
-      // Display success toast only once
-      toast.success('Successfully logged out!');
+      // Display success toast only once - adding an ID to prevent duplicated toast - https://fkhadra.github.io/react-toastify/prevent-duplicate/
+      toast.success('Successfully logged out!',{toastId: 'logout1'});
       console.log('test')
   
+      // navigate to login page
+      navigate("/login")
 
     }, [onLogout]);
   
