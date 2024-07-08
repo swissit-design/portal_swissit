@@ -28,12 +28,14 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install poetry
+          export PATH="$HOME/.local/bin:$PATH"
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Collect static files
         run: |
           cd backend
+          export PATH="$HOME/.local/bin:$PATH"
           poetry run python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
