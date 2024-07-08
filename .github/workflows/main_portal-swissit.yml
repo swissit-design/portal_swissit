@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Create, start virtual environment and Poetry install
+      - name: Create, start virtual environment
         run: |
           cd backend
           python -m venv venv
@@ -37,6 +37,7 @@ jobs:
       - name: Collect static files
         run: |
           cd backend
+          source venv/bin/activate
           python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
