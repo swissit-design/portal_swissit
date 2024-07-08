@@ -33,11 +33,13 @@ jobs:
           cd backend
           pip install poetry
           poetry install --no-interaction
+          poetry show
+          poetry config --list
 
       - name: Collect static files
         run: |
           cd backend
-          source venv/bin/activate
+          poetry show
           python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
