@@ -27,19 +27,13 @@ jobs:
           cd backend
           python -m venv venv
           source venv/bin/activate
-
-      - name: Install dependencies with Poetry
-        run: |
-          cd backend
           pip install poetry
-          poetry install --no-interaction
-          poetry show
-          poetry config --list
+          poetry config virtualenvs.in-project true
+          poetry install
 
       - name: Collect static files
         run: |
           cd backend
-          poetry show
           python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
