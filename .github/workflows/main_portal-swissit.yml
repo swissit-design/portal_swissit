@@ -29,7 +29,7 @@ jobs:
           pip install poetry
       
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-interaction
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
