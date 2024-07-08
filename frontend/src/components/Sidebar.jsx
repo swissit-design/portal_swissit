@@ -6,7 +6,7 @@ function Sidebar( {sidebarData}) {
     return (
     <div className="h-full w-64 bg-gray-800 text-white fixed left-0 top-0 overflow-y-auto">
         <div className="p-4">
-        <h2 className="text-xl font-bold">Sidebar</h2>
+        <h2 className="text-xl font-bold">SwissIT Portal</h2>
         <ul className="mt-4">
             {sidebarData.map((item, index) => (
             <li key={index} className="mt-2">
