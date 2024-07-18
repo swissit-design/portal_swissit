@@ -1,5 +1,9 @@
 # Notes for Portal SwissIT Webapp
-# Backend Setup and Installation
+# Backend Setup and Installation 
+- decided to use django-ninja instead of REACt FRAMEWORK
+- https://django-ninja.dev/
+- with ninja_extra and ninja_jwt as well
+
 1. make sure you have venv install on your machine if not there, run
 ```bash
 virtualenv venv -p=python3.10
