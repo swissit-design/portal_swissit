@@ -15,7 +15,7 @@ function Login({ onLogin }) {
         setLoading(true); // Start loading spinner
 
         try {
-            const response = await api.post("/api/token/", { username, password });
+            const response = await api.post("/api/token/pair", { username, password });
             const data = response.data;
             localStorage.setItem('access', data.access);
             localStorage.setItem('refresh', data.refresh);
@@ -24,9 +24,9 @@ function Login({ onLogin }) {
             navigate("/")
             toast.success('Successfully Logged in!');
         } catch (error) {
-            console.log(error)
-            setError('Invalid username or password');
-            toast.error('Invalid username or password');
+            console.log(JSON.parse(error.request.responseText).detail)
+            setError(JSON.parse(error.request.responseText).detail);
+            toast.error(JSON.parse(error.request.responseText).detail);
         } finally {
             setLoading(false); // End loading
         }

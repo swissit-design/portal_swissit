@@ -20,9 +20,9 @@ function RegisterForm({ route, method }) {
             console.log('Successfully Registered')
             toast.success('Successfully Registered!');
         } catch (error) {
-            console.log(error)
-            setError('Invalid username or password - User already exists.');
-            toast.error('Invalid username or password - User already exists.');
+            console.log(JSON.parse(error.request.responseText).detail)
+            setError(JSON.parse(error.request.responseText).detail);
+            toast.error(JSON.parse(error.request.responseText).detail);
         } finally {
             setLoading(false); // End loading
         }
