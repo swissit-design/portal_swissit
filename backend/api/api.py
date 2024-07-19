@@ -4,16 +4,11 @@ from django_rest_passwordreset.controller import ResetPasswordController
 from ninja_extra import NinjaExtraAPI
 from ninja.errors import HttpError
 
-from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
 # Import the DB Schemas
 from .schemas import UserSchema
-
-# Import CustomUser
-User = get_user_model()
-
 
 api = NinjaExtraAPI()
 
@@ -29,7 +24,7 @@ def test(request):
 
 @api.post("/register", auth=None)
 def register(request, payload: UserSchema):
-    if User.objects.filter(email=payload.email).exists():
+    if User.objects.filter(username=payload.username).exists():
         raise HttpError(400, "Email already exists")
 
     try:
@@ -37,5 +32,5 @@ def register(request, payload: UserSchema):
     except ValidationError as e:
         raise HttpError(400, e.messages[0])
 
-    User.objects.create_user(email=payload.email, password=payload.password)
+    User.objects.create_user(username=payload.username, password=payload.password)
     return {"message": "Email created successfully"}

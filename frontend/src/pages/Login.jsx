@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 function Login({ onLogin }) {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -15,7 +15,7 @@ function Login({ onLogin }) {
         setLoading(true); // Start loading spinner
 
         try {
-            const response = await api.post("/api/token/pair", { email, password });
+            const response = await api.post("/api/token/pair", { username, password });
             const data = response.data;
             localStorage.setItem('access', data.access);
             localStorage.setItem('refresh', data.refresh);
@@ -59,8 +59,8 @@ function Login({ onLogin }) {
                        type="email"
                        autoComplete="email"
                        required
-                       value={email}
-                       onChange={(e) => setEmail(e.target.value)}
+                       value={username}
+                       onChange={(e) => setUsername(e.target.value)}
                        placeholder="Email"
                        className="shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      />

@@ -1,6 +1,6 @@
 # Portal Swiss IT Design - July 2024
 - client area where we will store all info on the client side
-- authentication email password
+- authentication username password
 - adding all bills, subscription and notes
 - FR, DE, EN
 

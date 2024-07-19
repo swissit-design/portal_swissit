@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "users",
     "api",
     "ninja_extra",
     "corsheaders",
@@ -155,7 +154,3 @@ EMAIL_POST = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('ZOHO_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('ZOHO_PASSWORD')
-
-# we want to have email as main auth login and not username
-AUTH_USER_MODEL = 'users.CustomUser'
-AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
