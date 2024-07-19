@@ -4,6 +4,7 @@ from django_rest_passwordreset.controller import ResetPasswordController
 from ninja_extra import NinjaExtraAPI
 from ninja.errors import HttpError
 
+from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
