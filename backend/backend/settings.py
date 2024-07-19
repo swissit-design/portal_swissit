@@ -55,7 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "api",
     "ninja_extra",
-    "corsheaders"
+    "corsheaders",
+    "django_rest_passwordreset",
+
 ]
 
 MIDDLEWARE = [
@@ -144,5 +146,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  # React app URL
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
+
+# SMTP EMAIL SETUP with Zoho
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('ZOHO_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('ZOHO_PASSWORD')

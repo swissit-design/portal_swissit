@@ -1,4 +1,6 @@
 from ninja_jwt.controller import NinjaJWTDefaultController
+from django_rest_passwordreset.controller import ResetPasswordController
+
 from ninja_extra import NinjaExtraAPI
 from ninja.errors import HttpError
 
@@ -14,6 +16,9 @@ api = NinjaExtraAPI()
 ## adding all JWT functions
 api.register_controllers(NinjaJWTDefaultController)
 
+## adding the password reset path
+api.register_controllers(ResetPasswordController)
+
 @api.get('/test')
 def test(request):
     return {'test':'success'}
@@ -21,7 +26,7 @@ def test(request):
 @api.post("/register", auth=None)
 def register(request, payload: UserSchema):
     if User.objects.filter(username=payload.username).exists():
-        raise HttpError(400, "Username already exists")
+        raise HttpError(400, "User already exists")
 
     try:
         validate_password(payload.password)
