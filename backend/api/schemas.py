@@ -1,5 +1,5 @@
 from ninja import Schema
 
 class UserSchema(Schema):
-    username : str
+    username: str
     password: str

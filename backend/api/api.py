@@ -25,7 +25,7 @@ def test(request):
 @api.post("/register", auth=None)
 def register(request, payload: UserSchema):
     if User.objects.filter(username=payload.username).exists():
-        raise HttpError(400, "Email already exists")
+        raise HttpError(400, "User already exists")
 
     try:
         validate_password(payload.password)
@@ -33,4 +33,4 @@ def register(request, payload: UserSchema):
         raise HttpError(400, e.messages[0])
 
     User.objects.create_user(username=payload.username, password=payload.password)
-    return {"message": "Email created successfully"}
+    return {"message": "User created successfully"}
