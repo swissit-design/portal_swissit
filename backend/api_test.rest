@@ -1,14 +1,14 @@
 POST http://127.0.0.1:8000/api/token/pair
 Content-Type: application/json
 
-{"username":"test@test.com", "password":"test"}
+{"email":"test@test.com", "password":"test"}
 
 ###
 GET http://127.0.0.1:8000/api/home/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODM3Nzk2LCJpYXQiOjE3MTk4MzQxOTYsImp0aSI6ImVhZDA3ZjAyZjE1MDQ3NmJhZDVmNjJkOWM5YTEwZTBkIiwidXNlcl9pZCI6MX0.eaoEvXfqQtj9XGCMT1lU17iai85G1t053GJqQcNQd5Q
 
-{"username":"test@test.com", "password":"test"}
+{"email":"test@test.com", "password":"test"}
 
 ###
 

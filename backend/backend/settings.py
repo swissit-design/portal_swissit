@@ -53,9 +53,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "users",
     "api",
     "ninja_extra",
-    "corsheaders"
+    "corsheaders",
+    "django_rest_passwordreset",
+
 ]
 
 MIDDLEWARE = [
@@ -144,5 +147,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  # React app URL
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
+
+# SMTP EMAIL SETUP with Zoho
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('ZOHO_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('ZOHO_PASSWORD')
+
+# we want to have email as main auth login and not username
+AUTH_USER_MODEL = 'users.CustomUser'
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']

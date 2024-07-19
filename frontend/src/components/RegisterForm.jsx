@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 function RegisterForm({ route, method }) {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -15,7 +15,7 @@ function RegisterForm({ route, method }) {
         setLoading(true); // Start loading spinner
 
         try {
-            const response = await api.post(route, { username, password });
+            const response = await api.post(route, { email, password });
             navigate("/login")
             console.log('Successfully Registered')
             toast.success('Successfully Registered!');
@@ -35,7 +35,7 @@ function RegisterForm({ route, method }) {
              <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                <img
                  className="mx-auto h-10 w-auto"
-                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                 src="/swissit_logo.png"
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -56,8 +56,8 @@ function RegisterForm({ route, method }) {
                        type="email"
                        autoComplete="email"
                        required
-                       value={username}
-                       onChange={(e) => setUsername(e.target.value)}
+                       value={email}
+                       onChange={(e) => setEmail(e.target.value)}
                        placeholder="Email"
                        className="shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      />

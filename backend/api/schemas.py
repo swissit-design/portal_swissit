@@ -1,5 +1,6 @@
 from ninja import Schema
+from pydantic import EmailStr, Field
 
 class UserSchema(Schema):
-    username: str
+    email: EmailStr | None = Field(default=None)
     password: str
