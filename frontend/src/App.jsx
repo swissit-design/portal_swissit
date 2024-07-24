@@ -10,7 +10,8 @@ import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Sidebar from './components/Sidebar';
 import sidebarData from './assets/sidebarData';
-
+import PasswordReset from './pages/PasswordReset';
+import PasswordResetRequest from './pages/PasswordResetRequest';
 
 function RegisterAndLogout() {
   localStorage.clear()
@@ -66,6 +67,8 @@ function App() {
         <Route path="/login" element={<Login onLogin={handleLogin}/>} />
         <Route path="/logout" element={<Logout onLogout={handleLogout}/>} />
         <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/request-password-reset" element={<PasswordResetRequest />} />
+        <Route path="/password-reset/:token" element={<PasswordReset />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       </div>

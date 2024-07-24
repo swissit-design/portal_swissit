@@ -49,3 +49,5 @@ fontFamily: {
 'sans': ['"Playwrite US Modern"', ...defaultTheme.fontFamily.sans], //set main font
 },
 ```
+1. passowrd reset on django ninja
+https://github.com/eadwinCode/django-ninja-passwordreset/tree/master

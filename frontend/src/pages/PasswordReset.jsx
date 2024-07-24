@@ -2,33 +2,40 @@ import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useParams } from "react-router-dom";
 
-function Login({ onLogin }) {
-    const [username, setUsername] = useState("");
+function PasswordReset({ }) {
     const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
+    const {token} = useParams();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Start loading spinner
+        setLoading(true); // Start loading spinner 
 
         try {
-            const response = await api.post("/api/token/pair", { username, password });
-            const data = response.data;
-            localStorage.setItem('access', data.access);
-            localStorage.setItem('refresh', data.refresh);
-            localStorage.setItem('isAuthorized', 'true'); 
-            onLogin(data)
-            navigate("/")
-            toast.success('Successfully Logged in!');
+          if (password != password2) {
+          console.log('Password does not match')
+          setError('Password does not match')
+          toast.error('Password does not match')
+          } else {
+            const response = await api.post("/api/password_reset/confirm/", { password, token});
+            const data = response;
+            console.log(data)
+            setError("")
+            toast.success('NEw Password succesfully changed, redirecting you to Login page!');
+            setTimeout(() => {
+              navigate("/")
+            }, 2000)}
         } catch (error) {
-            console.log(JSON.parse(error.request.responseText).detail)
-            setError(JSON.parse(error.request.responseText).detail);
-            toast.error(JSON.parse(error.request.responseText).detail);
+            console.log(JSON.parse(error.request.responseText).password[0])
+            setError(JSON.parse(error.request.responseText).password[0]);
+            toast.error(JSON.parse(error.request.responseText).password[0]);
         } finally {
-            setLoading(false); // End loading
+            setLoading(false);
         }
     };
 
@@ -42,43 +49,18 @@ function Login({ onLogin }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Login to your account
+               Change your password
                </h2>
              </div>
+     
              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
-                   <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                     Email address
+                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                     Enter password 
                    </label>
                    <div className="mt-2">
-                     <input
-                       id="email"
-                       name="email"
-                       type="email"
-                       autoComplete="email"
-                       required
-                       value={username}
-                       onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Email"
-                       className="shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                     />
-                   </div>
-                 </div>
-     
-                 <div>
-                   <div className="flex items-center justify-between">
-                     <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                       Password
-                     </label>
-                     <div className="text-sm">
-                       <a href="/request-password-reset" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                         Forgot password?
-                       </a>
-                     </div>
-                   </div>
-                   <div className="mt-2">
-                     <input
+                   <input
                        id="password"
                        name="password"
                        type="password"
@@ -86,17 +68,29 @@ function Login({ onLogin }) {
                        required
                        value={password}
                        onChange={(e) => setPassword(e.target.value)}
-                       placeholder="Password"
+                       placeholder="Enter password"
                        className={`shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${error ? 'border-red-500 bg-red-100' : ''}`}
                      />
                    </div>
                  </div>
-                 <div className="text-sm">
-                 No Account yet? 
-                       <a href="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                         Sign in
-                       </a>
-                     </div>
+                 <div>
+                   <label htmlFor="password2" className="block text-sm font-medium leading-6 text-gray-900">
+                     Confirm password 
+                   </label>
+                   <div className="mt-2">
+                   <input
+                       id="password2"
+                       name="password2"
+                       type="password"
+                       autoComplete="confirm-password"
+                       required
+                       value={password2}
+                       onChange={(e) => setPassword2(e.target.value)}
+                       placeholder="Confirm password"
+                       className={`shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${error ? 'border-red-500 bg-red-100' : ''}`}
+                     />
+                   </div>
+                 </div>
 
                  {error &&
                  <div class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md" role="alert">
@@ -107,11 +101,9 @@ function Login({ onLogin }) {
                   </div>
                 </div>
               </div>
-            }        
-
-             <div>
-            
-                      {loading ? 
+            }
+                 <div>
+                  {loading ? 
                   (<button
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -122,7 +114,7 @@ function Login({ onLogin }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                    >
-                     Login</button>}
+                     Change your password</button>}
                  </div>
                </form>
              </div>
@@ -131,4 +123,4 @@ function Login({ onLogin }) {
     );
 }
 
-export default Login
+export default PasswordReset

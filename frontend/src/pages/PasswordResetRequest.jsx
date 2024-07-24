@@ -3,9 +3,8 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-function Login({ onLogin }) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+function PasswordResetRequest ({ }) {
+    const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -15,20 +14,16 @@ function Login({ onLogin }) {
         setLoading(true); // Start loading spinner
 
         try {
-            const response = await api.post("/api/token/pair", { username, password });
-            const data = response.data;
-            localStorage.setItem('access', data.access);
-            localStorage.setItem('refresh', data.refresh);
-            localStorage.setItem('isAuthorized', 'true'); 
-            onLogin(data)
-            navigate("/")
-            toast.success('Successfully Logged in!');
+            const response = await api.post("/api/password_reset/", { email });
+            const data = response;
+            console.log(data)
+            toast.success('If your email exists you will receive an email with a link to reset your password');
         } catch (error) {
-            console.log(JSON.parse(error.request.responseText).detail)
-            setError(JSON.parse(error.request.responseText).detail);
-            toast.error(JSON.parse(error.request.responseText).detail);
+            console.log(JSON.parse(error.request.responseText).email[0])
+            setError(JSON.parse(error.request.responseText).email[0]);
+            toast.error(JSON.parse(error.request.responseText).email[0]);
         } finally {
-            setLoading(false); // End loading
+            setLoading(false);
         }
     };
 
@@ -42,9 +37,10 @@ function Login({ onLogin }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Login to your account
+               Forget your password
                </h2>
              </div>
+     
              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
@@ -58,46 +54,13 @@ function Login({ onLogin }) {
                        type="email"
                        autoComplete="email"
                        required
-                       value={username}
-                       onChange={(e) => setUsername(e.target.value)}
+                       value={email}
+                       onChange={(e) => setEmail(e.target.value)}
                        placeholder="Email"
                        className="shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      />
                    </div>
                  </div>
-     
-                 <div>
-                   <div className="flex items-center justify-between">
-                     <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                       Password
-                     </label>
-                     <div className="text-sm">
-                       <a href="/request-password-reset" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                         Forgot password?
-                       </a>
-                     </div>
-                   </div>
-                   <div className="mt-2">
-                     <input
-                       id="password"
-                       name="password"
-                       type="password"
-                       autoComplete="current-password"
-                       required
-                       value={password}
-                       onChange={(e) => setPassword(e.target.value)}
-                       placeholder="Password"
-                       className={`shadow bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${error ? 'border-red-500 bg-red-100' : ''}`}
-                     />
-                   </div>
-                 </div>
-                 <div className="text-sm">
-                 No Account yet? 
-                       <a href="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                         Sign in
-                       </a>
-                     </div>
-
                  {error &&
                  <div class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md" role="alert">
                 <div class="flex">
@@ -107,11 +70,9 @@ function Login({ onLogin }) {
                   </div>
                 </div>
               </div>
-            }        
-
-             <div>
-            
-                      {loading ? 
+            }
+                 <div>
+                  {loading ? 
                   (<button
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -122,7 +83,7 @@ function Login({ onLogin }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                    >
-                     Login</button>}
+                     Send Email Reset</button>}
                  </div>
                </form>
              </div>
@@ -131,4 +92,4 @@ function Login({ onLogin }) {
     );
 }
 
-export default Login
+export default PasswordResetRequest

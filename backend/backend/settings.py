@@ -150,10 +150,13 @@ CORS_ALLOWS_CREDENTIALS = True
 
 # SMTP EMAIL SETUP with Zoho
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = 'smtp.zoho.eu'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('ZOHO_USER')
 EMAIL_HOST_PASSWORD = os.getenv('ZOHO_PASSWORD')
+
+# REACT Full Domain used for email reset to REACT directly and not API
+REACT_DOMAIN = 'http://localhost:5173/'
