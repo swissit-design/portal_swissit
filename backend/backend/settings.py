@@ -103,6 +103,20 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+  'default': {
+    'ENGINE': 'mssql',
+    'NAME': os.getenv('SQLDATABASE'),
+    'USER': os.getenv('SQLUSER'),
+    'PASSWORD': os.getenv('SQLPASSWORD'),
+    'HOST': os.getenv('SQLHOST'),
+    'PORT': os.getenv('SQLPORT'),
+    'OPTIONS': {
+      'sslmode': 'require',
+    },
+  }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -14,6 +14,7 @@ pip install poetry
 ```bash
 poetry install
 poetry add django # to add dependency
+poetry add  "djongo@*" --dry-run # if issue with dependcy
 poetry export --without-hashes -f requirements.txt --output requirements.txt # when deploying to Azure, easier
 ```
 2. Adding the api_test.rest to test the request when authentication and others - make sure you install the extensions in VS code called REST CLIENT.
