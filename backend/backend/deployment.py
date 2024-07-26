@@ -32,11 +32,11 @@ STORAGES = {
 DATABASES = {
   'default': {
     'ENGINE': 'mssql',
-    'NAME': os.getenv('SQLDATABASE'),
-    'USER': os.getenv('SQLUSER'),
-    'PASSWORD': os.getenv('SQLPASSWORD'),
-    'HOST': os.getenv('SQLHOST'),
-    'PORT': os.getenv('SQLPORT'),
+    'NAME': os.getenv('DBDATABASE'),
+    'USER': os.getenv('DBUSER'),
+    'PASSWORD': os.getenv('DBPASSWORD'),
+    'HOST': os.getenv('DBHOST'),
+    'PORT': os.getenv('DBPORT'),
     'OPTIONS': {
       'sslmode': 'require',
     },
