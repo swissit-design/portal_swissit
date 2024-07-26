@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from 'react-hot-toast';
+
 import Login from "./pages/Login"
 import Logout from "./pages/Logout"
 import Register from "./pages/Register"
@@ -40,16 +40,9 @@ function App() {
   return (
     <BrowserRouter>
       {/* Design the toast container accordingly here */}
-      <ToastContainer
-          position="top-right"
+      <Toaster
+          position="bottom-right"
           autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
         />
     <div className="flex h-screen overflow-hidden">
     {isAuthorized && <Sidebar sidebarData={sidebarData} />}
