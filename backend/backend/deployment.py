@@ -18,7 +18,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWS_ORIGINS = []
+CORS_ALLOWS_ORIGINS = [os.path.join(BASE_DIR, 'REACT_DOMAIN')]
 
 STORAGES = {
     "default": {
@@ -44,3 +44,4 @@ DATABASES = {
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+REACT_DOMAIN = os.path.join(BASE_DIR, 'REACT_DOMAIN')
