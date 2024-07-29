@@ -18,6 +18,7 @@ function PasswordResetRequest ({ }) {
             const response = await api.post("/api/password_reset/", { email });
             const data = response;
             console.log(data)
+            setError("If your email exists you will receive an email with a link to reset your password")
             toast.success('If your email exists you will receive an email with a link to reset your password');
         } catch (error) {
             console.log(JSON.parse(error.request.responseText).email[0])

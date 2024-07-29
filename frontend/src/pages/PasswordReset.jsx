@@ -26,7 +26,7 @@ function PasswordReset({ }) {
             const data = response;
             console.log(data)
             setError("")
-            toast.success('NEw Password succesfully changed, redirecting you to Login page!');
+            toast.success('New Password succesfully changed, redirecting you to Login page!');
             setTimeout(() => {
               navigate("/")
             }, 2000)}

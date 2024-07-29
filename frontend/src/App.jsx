@@ -42,7 +42,7 @@ function App() {
       {/* Design the toast container accordingly here */}
       <Toaster
           position="bottom-right"
-          autoClose={3000}
+          autoClose={5000}
         />
     <div className="flex h-screen overflow-hidden">
     {isAuthorized && <Sidebar sidebarData={sidebarData} />}
