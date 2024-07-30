@@ -26,16 +26,21 @@ function Login({ onLogin }) {
             navigate("/")
             toast.success('Successfully Logged in!');
         } catch (error) {
+            try {
             console.log(JSON.parse(error.request.responseText).detail)
             setError(JSON.parse(error.request.responseText).detail);
-            toast.error(JSON.parse(error.request.responseText).detail);
+            toast.error(JSON.parse(error.request.responseText).detail);}
+            catch (error){
+              setError(error.request);
+
+            }
         } finally {
             setLoading(false); // End loading
         }
     };
 
     return (
-      <div class="flex h-screen">
+      <div className="flex h-screen">
           {/* <!-- Left Pane --> */}
           <LoginLeftPane/>
           {/* <!-- Right Pane --> */}
@@ -97,11 +102,11 @@ function Login({ onLogin }) {
                    </div>
                  </div>
                  {error &&
-                 <div class="bg-sky-100 border-t-4 border-sky-500 rounded-b text-sky-900 px-4 py-3 shadow-md" role="alert">
-                <div class="flex">
-                  <div class="py-1"><svg class="fill-current h-6 w-6 text-sky-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                 <div className="bg-sky-100 border-t-4 border-sky-500 rounded-b text-sky-900 px-4 py-3 shadow-md" role="alert">
+                <div className="flex">
+                  <div className="py-1"><svg className="fill-current h-6 w-6 text-sky-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                   <div>
-                    <p class="text-sm">{error}</p>
+                    <p className="text-sm">{error}</p>
                   </div>
                 </div>
               </div>
@@ -123,8 +128,8 @@ function Login({ onLogin }) {
                      Login</button>}
                  </div>
                </form>
-               <div class="mt-4 text-sm text-gray-600 text-center">
-        <p>No Account yet?  <a href="/register" class=" text-sky-800 hover:text-sky-700 hover:underline">Sign up here</a>
+               <div className="mt-4 text-sm text-gray-600 text-center">
+        <p>No Account yet?  <a href="/register" className=" text-sky-800 hover:text-sky-700 hover:underline">Sign up here</a>
         </p>
       </div>
              </div>

@@ -1,9 +1,11 @@
 import axios from "axios";
 
-// const isDevelopment = import.meta.env.MODE === 'development'
-// const baseURL = isDevelopment ? import.meta.env.VITE_API_BASE_URL_LOCAL : import.meta.env.VITE_API_BASE_URL_PROD
-const baseURL = import.meta.env.REACT_APP_API_URL
+console.log(import.meta.env.MODE)
+console.log(import.meta.env)
+const isDevelopment = import.meta.env.MODE === 'development'
+const baseURL = isDevelopment ? import.meta.env.VITE_API_URL_DEVELOPMENT : import.meta.env.VITE_API_URL_PRODUCTION
 const api = axios.create({baseURL});
+console.log(baseURL)
 
 api.interceptors.request.use(
   (config) => {
