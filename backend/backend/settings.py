@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -96,27 +96,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'mssql',
+#     'NAME': os.getenv('DBDATABASE'),
+#     'USER': os.getenv('DBUSER'),
+#     'PASSWORD': os.getenv('DBPASSWORD'),
+#     'HOST': os.getenv('DBHOST'),
+#     'PORT': os.getenv('DBPORT'),
+#     'OPTIONS': {
+#         'driver': 'ODBC Driver 17 for SQL Server',
+#         "extra_params": 'Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30',
+#     },
+#   }
+# }
 
 DATABASES = {
   'default': {
-    'ENGINE': 'mssql',
-    'NAME': os.getenv('DBDATABASE'),
-    'USER': os.getenv('DBUSER'),
-    'PASSWORD': os.getenv('DBPASSWORD'),
-    'HOST': os.getenv('DBHOST'),
-    'PORT': os.getenv('DBPORT'),
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': getenv('PGDATABASE'),
+    'USER': getenv('PGUSER'),
+    'PASSWORD': getenv('PGPASSWORD'),
+    'HOST': getenv('PGHOST'),
+    'PORT': getenv('PGPORT', 5432),
     'OPTIONS': {
-        'driver': 'ODBC Driver 17 for SQL Server',
+      'sslmode': 'require',
     },
   }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
