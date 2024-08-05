@@ -103,28 +103,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #     }
 # }
 
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'mssql',
-#     'NAME': os.getenv('DBDATABASE'),
-#     'USER': os.getenv('DBUSER'),
-#     'PASSWORD': os.getenv('DBPASSWORD'),
-#     'HOST': os.getenv('DBHOST'),
-#     'PORT': os.getenv('DBPORT'),
-#     'OPTIONS': {
-#         'driver': 'ODBC Driver 17 for SQL Server',
-#         "extra_params": 'Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30',
-#     },
-#   }
-# }
-
+### https://console.neon.tech/ 
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': getenv('PGDATABASE'),
     'USER': getenv('PGUSER'),
     'PASSWORD': getenv('PGPASSWORD'),
-    'HOST': getenv('PGHOST'),
+    'HOST': getenv('PGHOSTDEV'),
     'PORT': getenv('PGPORT', 5432),
     'OPTIONS': {
       'sslmode': 'require',
