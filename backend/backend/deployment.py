@@ -1,4 +1,5 @@
 import os
+from os import getenv
 from .settings import *
 from .settings import BASE_DIR
 
@@ -31,12 +32,12 @@ STORAGES = {
 
 DATABASES = {
   'default': {
-    'ENGINE': 'mssql',
-    'NAME': os.getenv('DBDATABASE'),
-    'USER': os.getenv('DBUSER'),
-    'PASSWORD': os.getenv('DBPASSWORD'),
-    'HOST': os.getenv('DBHOST'),
-    'PORT': os.getenv('DBPORT'),
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': getenv('PGDATABASE'),
+    'USER': getenv('PGUSER'),
+    'PASSWORD': getenv('PGPASSWORD'),
+    'HOST': getenv('PGHOST'),
+    'PORT': getenv('PGPORT', 5432),
     'OPTIONS': {
       'sslmode': 'require',
     },

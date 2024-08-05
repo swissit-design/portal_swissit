@@ -52,3 +52,6 @@ fontFamily: {
 ```
 1. passowrd reset on django ninja
 https://github.com/eadwinCode/django-ninja-passwordreset/tree/master
+
+1. nice example to follow for my app
+- https://fly.io/dashboard - using Tailwind CSS
