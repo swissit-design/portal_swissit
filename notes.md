@@ -19,9 +19,13 @@ poetry export --without-hashes -f requirements.txt --output requirements.txt # w
 ```
 2. Adding the api_test.rest to test the request when authentication and others - make sure you install the extensions in VS code called REST CLIENT.
 
-2. Deployment.py added for Azure deployment. if you want to run a django with deployment script
+2. Deployment.py added for Azure deployment. if you want to run a django with deployment/production script
 ```bash
 python manage.py runserver --settings backend.deployment
+```
+2. Run server locally with django -> http://127.0.0.1:8000/api/docs
+```bash
+python manage.py runserver
 ```
 
 # Frontend Setup and Installation
@@ -52,6 +56,15 @@ fontFamily: {
 ```
 1. passowrd reset on django ninja
 https://github.com/eadwinCode/django-ninja-passwordreset/tree/master
+
+1. SVG Illustrations
+    - taken from https://undraw.co/illustrations
+
+1. My colors for SwissIT Design
+    - REACT with tailwindcss: https://tailwindcss.com/docs/customizing-colors#default-color-palette
+        - sky-800 for button -> #075985
+        - sky-700 for button hover -> #0369a1
+
 
 1. nice example to follow for my app
 - https://fly.io/dashboard - using Tailwind CSS
