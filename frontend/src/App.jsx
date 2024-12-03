@@ -8,8 +8,6 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
-import Sidebar from './components/Sidebar';
-import sidebarData from './assets/sidebarData';
 import PasswordReset from './pages/PasswordReset';
 import PasswordResetRequest from './pages/PasswordResetRequest';
 
@@ -44,10 +42,8 @@ function App() {
           position="bottom-right"
           autoClose={5000}
         />
-    <div className="flex h-screen overflow-hidden">
-    {isAuthorized && <Sidebar sidebarData={sidebarData} />}
-    <div className={`flex flex-col ${isAuthorized ? 'ml-64' : 'ml-0'} w-full`}>
-      <div className="flex-1 overflow-y-auto p-6">
+
+    <div className="flex flex-col w-full">
       <Routes>
         <Route
           path="/"
@@ -65,8 +61,7 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       </div>
-      </div>
-      </div>
+      
     </BrowserRouter>
   )
 }

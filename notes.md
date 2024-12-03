@@ -69,3 +69,5 @@ https://github.com/eadwinCode/django-ninja-passwordreset/tree/master
 9. nice example to follow for my app
     - https://fly.io/dashboard - using Tailwind CSS
     - GUI examples here -> https://dribbble.com/search/client-dashboard
+
+10. Avatar sample -> https://www.dicebear.com/playground/

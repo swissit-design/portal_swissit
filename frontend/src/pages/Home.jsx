@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
 import React from 'react';
-import api from "../api";
-import Note from "../components/Note"
+import Sidebar from '../components/Sidebar/HomeSideBar';
+import Dashboard from '../components/Dashboard/Dashboard'
 
 function Home() {
 
     return (
-        <div className="container mx-auto p-4">
-Hello
-        </div>
+        <main className="grid gap-4 p-4 grid-cols-[220px,_1fr]">
+        <Sidebar />
+        <Dashboard />
+        </main>
     );
 }
 
