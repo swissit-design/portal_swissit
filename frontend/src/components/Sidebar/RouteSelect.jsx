@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiDollarSign, FiHome, FiPaperclip, FiUser } from "react-icons/fi"
+import { FiDollarSign, FiHome, FiLogOut, FiPaperclip, FiUser } from "react-icons/fi"
 
 function RouteSelect() {
     return <div className="space-y-1">
@@ -8,6 +8,8 @@ function RouteSelect() {
         <Route Icon={FiUser} selected={false} title="User Info" link='user_info'></Route>
         <Route Icon={FiPaperclip} selected={false} title="Client Invoices" link='client_invoices'></Route>
         <Route Icon={FiDollarSign} selected={false} title="Client Payment History" link='client_payment_history'></Route> 
+        <Route Icon={FiLogOut} selected={false} title="Log out" link='logout'></Route> 
+
     </div>
 }
 
@@ -23,7 +25,8 @@ const Route = ({ Icon, selected, title, link }) => {
                 }`}
             >
                 {title}
-            </Link>        </button>
+            </Link>        
+            </button>
     );
 };
 

@@ -1,6 +1,5 @@
 // src/components/Sidebar.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import AccountToggle from './AccountToggle';
 import Search from './Search';
 import RouteSelect from './RouteSelect'
