@@ -2,7 +2,7 @@ import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
-import LoginLeftPane from '../components/LoginLeftPane'
+import LoginLeftPane from '../components/Authentication/LoginLeftPane'
 
 
 function Login({ onLogin }) {

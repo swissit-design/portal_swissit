@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 import AccountToggle from './AccountToggle';
 import Search from './Search';
 import RouteSelect from './RouteSelect'
+import ContactUs from './ContactUs';
 
 function Sidebar() {
     return (
-    <div className="overflow-y-scroll sticky top-4 h-[calc(100vh-32px-48px)]">
+    <div className="overflow-y-scroll sticky top-4 h-[calc(100vh-48px)]">
         <AccountToggle  />
         {/* <Search  /> */}
         <div>
         <RouteSelect />
         </div>
+        <ContactUs />
     </div>);
     }
 export default Sidebar;

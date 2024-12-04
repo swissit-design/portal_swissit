@@ -1,8 +1,8 @@
 import { useState } from "react";
-import api from "../api";
+import api from "../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import LoginLeftPane from '../components/LoginLeftPane'
+import LoginLeftPane from './LoginLeftPane'
 
 
 function RegisterForm({ route, method }) {
