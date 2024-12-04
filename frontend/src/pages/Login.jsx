@@ -26,13 +26,17 @@ function Login({ onLogin }) {
             navigate("/")
             toast.success('Successfully Logged in!');
         } catch (error) {
-            try {
+            if (error.response) {
             console.log(JSON.parse(error.request.responseText).detail)
             setError(JSON.parse(error.request.responseText).detail);
-            toast.error(JSON.parse(error.request.responseText).detail);}
-            catch (error){
+            toast.error(JSON.parse(error.request.responseText).detail);
+            } else if (error.request){
               setError(error.request);
-
+              console.error("Request error:", error.request);
+              setError("Request error:", error.request);
+              toast.error("Request error:", error.request);
+            } else {
+              console.error("Error message:", error.message);
             }
         } finally {
             setLoading(false); // End loading

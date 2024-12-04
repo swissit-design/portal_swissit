@@ -71,3 +71,5 @@ https://github.com/eadwinCode/django-ninja-passwordreset/tree/master
     - GUI examples here -> https://dribbble.com/search/client-dashboard
 
 10. Avatar sample -> https://www.dicebear.com/playground/
+
+11. REACT ICONs -> https://react-icons.github.io/react-icons/
