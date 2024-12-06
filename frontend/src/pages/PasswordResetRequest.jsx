@@ -3,12 +3,14 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import LoginLeftPane from '../components/Authentication/LoginLeftPane'
+import { useTranslation } from 'react-i18next';
 
 function PasswordResetRequest ({ }) {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +32,7 @@ function PasswordResetRequest ({ }) {
     };
 
     return (
-      <div class="flex h-screen">
+      <div className="flex h-screen">
         {/* <!-- Left Pane --> */}
         <LoginLeftPane/>
         {/* <!-- Right Pane --> */}
@@ -42,7 +44,7 @@ function PasswordResetRequest ({ }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Forget your password
+               {t('reset_password.reset_password_title')} 
                </h2>
              </div>
      
@@ -50,7 +52,7 @@ function PasswordResetRequest ({ }) {
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                     Email address
+                   {t('reset_password.email')} 
                    </label>
                    <div className="mt-2">
                      <input
@@ -88,7 +90,7 @@ function PasswordResetRequest ({ }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-sky-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                    >
-                     Send Email Reset</button>}
+                     {t('reset_password.reset_password_button')} </button>}
                  </div>
                </form>
              </div>

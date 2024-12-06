@@ -1,7 +1,49 @@
 {
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "title": "Welcome to SwissIT Design portal",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "client_info": "Client Info",
+    "products": "Products",
+    "invoices": "Invoices",
+    "payment_history": "Payment History",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "contact_us": {
+    "top":"Having trouble?",
+    "bottom":"Contact us...",
+    "button":"Support"
+  },
+  "login": {
+    "login_title":"Login to your account",
+    "email":"Email address",
+    "password":"Password",
+    "login_button":"Login",
+    "no_account_yet":"No Account yet?",
+    "sign_up_here_button":"Sign up here",
+    "forgot_password_button":"Forgot password?"
+  },
+  "register": {
+    "register_title":"Register a new user",
+    "email":"Email address",
+    "password":"Password",
+    "password2":"Confirm password",
+    "register_button":"Register",
+    "already_user":"Already a user?",
+    "login_here":"Login here"
+  },
+  "reset_password" :{
+    "reset_password_title":"Forgot your password",
+    "email":"Email address",
+    "reset_password_button":"Send email request",
+    "reset_password_after_email_title":"Change your password",
+    "password":"Password",
+    "password2":"Confirm password",
+    "reset_password_after_email_button":"Change your password"
+  },
+  "not_found": {
+    "title":"404 Not Found",
+    "text":"The page you're looking for doesn't exist!",
+    "go_to_home":"Go to home"
   }
 }

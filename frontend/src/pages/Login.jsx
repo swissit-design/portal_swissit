@@ -3,7 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import LoginLeftPane from '../components/Authentication/LoginLeftPane'
-
+import { useTranslation } from 'react-i18next';
 
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -11,6 +11,7 @@ function Login({ onLogin }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,14 +57,14 @@ function Login({ onLogin }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Login to your account
+               {t('login.login_title')}
                </h2>
              </div>
              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                     Email address
+                   {t('login.email')}
                    </label>
                    <div className="mt-2">
                      <input
@@ -83,11 +84,11 @@ function Login({ onLogin }) {
                  <div>
                    <div className="flex items-center justify-between">
                      <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                       Password
+                     {t('login.password')}
                      </label>
                      <div className="text-sm">
                        <a href="/request-password-reset" className="font-semibold text-sky-800 hover:text-sky-700 hover:underline">
-                         Forgot password?
+                       {t('login.forgot_password_button')}
                        </a>
                      </div>
                    </div>
@@ -129,11 +130,11 @@ function Login({ onLogin }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-sky-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                    >
-                     Login</button>}
+                     {t('login.login_button')}</button>}
                  </div>
                </form>
                <div className="mt-4 text-sm text-gray-600 text-center">
-        <p>No Account yet?  <a href="/register" className=" text-sky-800 hover:text-sky-700 hover:underline">Sign up here</a>
+        <p>{t('login.no_account_yet')} <a href="/register" className=" text-sky-800 hover:text-sky-700 hover:underline">{t('login.sign_up_here_button')}</a>
         </p>
       </div>
              </div>

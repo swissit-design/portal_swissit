@@ -3,7 +3,7 @@ import api from "../../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import LoginLeftPane from './LoginLeftPane'
-
+import { useTranslation } from 'react-i18next';
 
 function RegisterForm({ route, method }) {
     const [username, setUsername] = useState("");
@@ -12,6 +12,7 @@ function RegisterForm({ route, method }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,7 +51,7 @@ function RegisterForm({ route, method }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Register a new user
+               {t('register.register_title')}
                </h2>
              </div>
      
@@ -58,7 +59,7 @@ function RegisterForm({ route, method }) {
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                     Email address
+                   {t('register.email')}
                    </label>
                    <div className="mt-2">
                      <input
@@ -78,7 +79,7 @@ function RegisterForm({ route, method }) {
                  <div>
                    <div className="flex items-center justify-between">
                      <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                       Password
+                     {t('register.password')}
                      </label>
                    </div>
                    <div className="mt-2">
@@ -98,7 +99,7 @@ function RegisterForm({ route, method }) {
 
                  <div>
                    <label htmlFor="password2" className="block text-sm font-medium leading-6 text-gray-900">
-                     Confirm password 
+                   {t('register.password2')}
                    </label>
                    <div className="mt-2">
                    <input
@@ -138,11 +139,11 @@ function RegisterForm({ route, method }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-sky-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                    >
-                     Register</button>}
+                     {t('register.register_button')}</button>}
                  </div>
                </form>
                <div class="mt-4 text-sm text-gray-600 text-center">
-        <p>Already a user? <a href="/login" class=" text-sky-800 hover:text-sky-700 hover:underline">Login here</a>
+        <p>{t('register.already_user')} <a href="/login" class=" text-sky-800 hover:text-sky-700 hover:underline">{t('register.login_here')}</a>
         </p>
       </div>
              </div>

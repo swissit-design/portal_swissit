@@ -1,7 +1,49 @@
 {
-  "title": "Bienvenue sur React avec react-i18next",
-  "description": {
-    "part1": "Pour commencer, modifiez <1>src/App.js</1> et sauvegardez pour recharger.",
-    "part2": "Changez de langue entre l'anglais et l'allemand en utilisant les boutons ci-dessus."
+  "title": "Bienvenue sur le portail SwissIT Design",
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "client_info": "Informations client",
+    "products": "Produits",
+    "invoices": "Factures",
+    "payment_history": "Historique des paiements",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter"
+  },
+  "contact_us": {
+    "top": "Besoin d'aide ?",
+    "bottom": "Contactez-nous...",
+    "button": "Support"
+  },
+  "login": {
+    "login_title": "Connectez-vous à votre compte",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "login_button": "Se connecter",
+    "no_account_yet": "Pas encore de compte ?",
+    "sign_up_here_button": "Inscrivez-vous ici",
+    "forgot_password_button": "Mot de passe oublié ?"
+  },
+  "register": {
+    "register_title": "Enregistrer un nouvel utilisateur",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "password2": "Confirmez le mot de passe",
+    "register_button": "S'inscrire",
+    "already_user": "Déjà utilisateur ?",
+    "login_here": "Connectez-vous ici"
+  },
+  "reset_password": {
+    "reset_password_title": "Mot de passe oublié",
+    "email": "Adresse e-mail",
+    "reset_password_button": "Envoyer la demande par e-mail",
+    "reset_password_after_email_title": "Changez votre mot de passe",
+    "password": "Mot de passe",
+    "password2": "Confirmez le mot de passe",
+    "reset_password_after_email_button": "Changer votre mot de passe"
+  },
+  "not_found" :{
+    "title": "404 Non Trouvé",
+    "text": "La page que vous recherchez n'existe pas !",
+    "go_to_home": "Aller à la page d'accueil"
   }
 }

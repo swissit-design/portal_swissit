@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { SlArrowLeft } from "react-icons/sl";
+import { useTranslation } from 'react-i18next';
 
 function NotFound() {
+  const { t } = useTranslation();
   return (
     <div className="flex h-screen">
       {/* <!-- Left Pane --> */}
@@ -102,16 +104,16 @@ function NotFound() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto text-center sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              404 Not Found
+            {t('not_found.title')}
             </h2>
-            The page you're looking for doesn't exist!
+            {t('not_found.text')}
 <div className="flex justify-center py-4">
     <Link 
   to="/"
   className="flex justify-center gap-3 w-max rounded px-3 py-2 text-sm font-semibold bg-sky-800 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
 >
   <SlArrowLeft className="text-lg" />
-  Go to Home
+  {t('not_found.go_to_home')}
 </Link>
 </div>
 

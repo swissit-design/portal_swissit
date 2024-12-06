@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
 
 function TopBar() {
-    const [selectedLanguage, setSelectedLanguage] = useState("en");
     const { t, i18n } = useTranslation();
+    // find the actual language selected or by default en
+    const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
     const handleLanguageChange = (event) => {
       const language = event.target.value;
       setSelectedLanguage(language);

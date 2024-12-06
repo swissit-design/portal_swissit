@@ -12,7 +12,6 @@ function Logout({onLogout}) {
   
       // Display success toast only once - adding an ID to prevent duplicated toast - https://fkhadra.github.io/react-toastify/prevent-duplicate/
       toast.success('Successfully logged out!',{id: 'logout1'});
-      console.log('test')
   
       // navigate to login page
       navigate("/login")

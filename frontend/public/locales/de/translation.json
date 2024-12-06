@@ -1,7 +1,49 @@
 {
-  "title": "Willkommen zu react und react-i18next",
-  "description": {
-    "part1": "Um loszulegen, ändere <1>src/App(DE).js</1> und speichere um neuzuladen.",
-    "part2": "Wechsle die Sprache zwischen deutsch und englisch mit Hilfe der beiden Schalter."
+  "title": "Willkommen beim SwissIT Design-Portal",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "client_info": "Kundeninformationen",
+    "products": "Produkte",
+    "invoices": "Rechnungen",
+    "payment_history": "Zahlungshistorie",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
+  },
+  "contact_us": {
+    "top": "Haben Sie Probleme?",
+    "bottom": "Kontaktieren Sie uns...",
+    "button": "Support"
+  },
+  "login": {
+    "login_title": "Melden Sie sich bei Ihrem Konto an",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "login_button": "Anmelden",
+    "no_account_yet": "Noch kein Konto?",
+    "sign_up_here_button": "Hier registrieren",
+    "forgot_password_button": "Passwort vergessen?"
+  },
+  "register": {
+    "register_title": "Neuen Benutzer registrieren",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "password2": "Passwort bestätigen",
+    "register_button": "Registrieren",
+    "already_user": "Bereits registriert?",
+    "login_here": "Hier anmelden"
+  },
+  "reset_password": {
+    "reset_password_title": "Passwort vergessen",
+    "email": "E-Mail-Adresse",
+    "reset_password_button": "E-Mail-Anfrage senden",
+    "reset_password_after_email_title": "Ändern Sie Ihr Passwort",
+    "password": "Passwort",
+    "password2": "Passwort bestätigen",
+    "reset_password_after_email_button": "Passwort ändern"
+  },
+  "not_found": {
+    "title": "404 Nicht Gefunden",
+    "text": "Die Seite, die Sie suchen, existiert nicht!",
+    "go_to_home": "Zur Startseite"
   }
 }

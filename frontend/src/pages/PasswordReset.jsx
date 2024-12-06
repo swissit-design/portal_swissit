@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function PasswordReset({ }) {
     const [password, setPassword] = useState("");
@@ -11,6 +12,7 @@ function PasswordReset({ }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +51,7 @@ function PasswordReset({ }) {
                  alt="Your Company"
                />
                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-               Change your password
+               {t('reset_password.reset_password_after_email_title')}
                </h2>
              </div>
      
@@ -57,7 +59,7 @@ function PasswordReset({ }) {
                <form  onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
                  <div>
                    <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                     Enter password 
+                   {t('reset_password.password')}
                    </label>
                    <div className="mt-2">
                    <input
@@ -75,7 +77,7 @@ function PasswordReset({ }) {
                  </div>
                  <div>
                    <label htmlFor="password2" className="block text-sm font-medium leading-6 text-gray-900">
-                     Confirm password 
+                   {t('reset_password.password2')} 
                    </label>
                    <div className="mt-2">
                    <input
@@ -114,7 +116,7 @@ function PasswordReset({ }) {
                      type="submit"
                      className="flex w-full justify-center rounded-md bg-sky-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                    >
-                     Change your password</button>}
+                     {t('reset_password.reset_password_after_email_button')}</button>}
                  </div>
                </form>
              </div>
