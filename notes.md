@@ -73,3 +73,15 @@ https://github.com/eadwinCode/django-ninja-passwordreset/tree/master
 10. Avatar sample -> https://www.dicebear.com/playground/
 
 11. REACT ICONs -> https://react-icons.github.io/react-icons/
+
+12. Example for button
+```javascript
+<Link 
+to='settings'
+className="flex text-sm items-center gap-2 bg-stone-100 transition-colors hover:bg-sky-100 hover:text-sky-700 px-3 py-1.5 rounded">
+    <FiSettings />
+    <span>Settings</span>
+</Link>
+```
+
+13. React translation wiht react-i18next -> https://react.i18next.com/ with i18next-http-backend in public/locales and i18next-browser-languageDetector 

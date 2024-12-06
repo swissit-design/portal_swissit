@@ -1,8 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FiSettings } from "react-icons/fi";
+import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 function TopBar() {
+    const [selectedLanguage, setSelectedLanguage] = useState("en");
+    const { t, i18n } = useTranslation();
+    const handleLanguageChange = (event) => {
+      const language = event.target.value;
+      setSelectedLanguage(language);
+      i18n.changeLanguage(language);
+    };
+  
     return (
         <div className="border-b px-4 mb-4 mt-2 pb-4 border-stone-200">
             <div className="flex p-0.5 items-center justify-between">
@@ -19,12 +26,14 @@ function TopBar() {
                 </button>
                 )}
 
-                <Link 
-                to='settings'
-                className="flex text-sm items-center gap-2 bg-stone-100 transition-colors hover:bg-sky-100 hover:text-sky-700 px-3 py-1.5 rounded">
-                    <FiSettings />
-                    <span>Settings</span>
-                </Link>
+                <select
+                    value={selectedLanguage}
+                    onChange={handleLanguageChange}
+                    className="flex text-sm items-center gap-2 bg-stone-100 transition-colors px-3 py-1.5 rounded focus:outline-none">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
             </div> 
         </div>
     );

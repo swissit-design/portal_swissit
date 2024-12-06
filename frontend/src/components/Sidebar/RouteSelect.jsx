@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiDollarSign, FiHome, FiLogOut, FiPaperclip, FiUser } from "react-icons/fi"
+import { FiDollarSign, FiHome, FiLogOut, FiPackage, FiPaperclip, FiSettings, FiUser } from "react-icons/fi"
 
 function RouteSelect() {
     return <div className="space-y-1">
         <Route Icon={FiHome} selected={true} title="Dashboard" link='/'></Route>
-        <Route Icon={FiUser} selected={false} title="User Info" link='user_info'></Route>
-        <Route Icon={FiPaperclip} selected={false} title="Client Invoices" link='client_invoices'></Route>
-        <Route Icon={FiDollarSign} selected={false} title="Client Payment History" link='client_payment_history'></Route> 
+        <Route Icon={FiUser} selected={false} title="Client Info" link='user_info'></Route>
+        <Route Icon={FiPackage} selected={false} title="Products" link='products'></Route>
+        <Route Icon={FiPaperclip} selected={false} title="Invoices" link='invoices'></Route>
+        <Route Icon={FiDollarSign} selected={false} title="Payment History" link='payment_history'></Route> 
+        <Route Icon={FiSettings} selected={false} title="Settings" link='settings'></Route> 
         <Route Icon={FiLogOut} selected={false} title="Log out" link='logout'></Route> 
-
     </div>
 }
 
