@@ -20,7 +20,9 @@ const Route = ({ Icon, selected, title, link }) => {
     return (
         <button className={`flex items-center justify-start gap-2 w-full rounded px-2 py-1.5 test-sm transition-[box-shadow,_background-color,_color] ${
         selected ? "bg-white text-stone-950 shadow" : "hover:bg-stone-200 bg-transparent text-stone-500 shadow-none"}`}>
-            <Icon className={selected ? "text-sky-700" :""} />
+            <Link to={link} className="flex items-center">
+                <Icon className={selected ? "text-sky-700" : ""} />
+            </Link>
             <Link
                 to={link}
                 className={`text-sm font-medium ${
