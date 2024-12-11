@@ -17,6 +17,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # language detection based on user preferences or request headers
 ]
 
 CORS_ALLOWS_ORIGINS = [os.path.join(BASE_DIR, 'REACT_DOMAIN')]
