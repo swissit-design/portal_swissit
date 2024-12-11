@@ -20,6 +20,7 @@ django-ninja-extra = "^0.21.1"
 django-ninja-passwordreset = "^1.2.5"
 django-extensions = "^3.2.3"
 mssql-django = "^1.5"
+djangorestframework-simplejwt = "^5.3.1"
 
 [build-system]
 requires = ["poetry-core"]

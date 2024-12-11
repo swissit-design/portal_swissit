@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_rest_passwordreset",
     'django_extensions',
+    "rest_framework_simplejwt", # need to be installed for all languages locales packages
 
 ]
 
@@ -70,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # language detection based on user preferences or request headers
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -140,13 +142,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'French'),
+    ('de', 'German'),
+]
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'en'  # Default language
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+
+TIME_ZONE = 'Europe/Berlin' # check on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Static files (CSS, JavaScript, Images)

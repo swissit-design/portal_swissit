@@ -12,7 +12,9 @@ import PasswordReset from './pages/PasswordReset';
 import PasswordResetRequest from './pages/PasswordResetRequest';
 
 function RegisterAndLogout() {
-  localStorage.clear()
+  localStorage.removeItem('access');
+  localStorage.removeItem('refresh');
+  localStorage.removeItem('isAuthorized');
   return <Register />
 }
 
@@ -26,7 +28,9 @@ function App() {
     }, []); // Run once on component mount
 
     const handleLogout = () =>  {
-        localStorage.clear();
+        localStorage.removeItem('access');
+        localStorage.removeItem('refresh');
+        localStorage.removeItem('isAuthorized');
         setIsAuthorized(false);
       }
     
