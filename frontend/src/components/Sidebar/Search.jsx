@@ -1,6 +1,5 @@
 import React from "react";
 import { FiCommand, FiSearch } from "react-icons/fi"
-import CommandMenu from './CommandMenu';
 
 // Using cmdk to searh in side bar -> https://www.npmjs.com/package/cmdk
 // npm install react-cmdk  
