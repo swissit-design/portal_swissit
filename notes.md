@@ -85,3 +85,5 @@ className="flex text-sm items-center gap-2 bg-stone-100 transition-colors hover:
 ```
 
 13. React translation wiht react-i18next -> https://react.i18next.com/ with i18next-http-backend in public/locales and i18next-browser-languageDetector 
+
+14. Sidebar REACT example here https://github.com/TomIsLoading/react-tailwind-dashboard/tree/main - followed the same approach - also here in youtube - https://www.youtube.com/watch?v=vdxnBKRD7kU&ab_channel=TomIsLoading
