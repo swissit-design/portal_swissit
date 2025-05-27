@@ -44,6 +44,34 @@ function Login({ onLogin }) {
         }
     };
 
+    const handleGoogleLogin = async () => {
+        try {
+            const response = await api.get('/api/social-login/google/');
+            if (response.data && response.data.auth_url) {
+                window.location.href = response.data.auth_url;
+            } else {
+                toast.error('Failed to get Google login URL');
+            }
+        } catch (error) {
+            console.error('Google login error:', error);
+            toast.error('Failed to initiate Google login');
+        }
+    };
+
+    const handleMicrosoftLogin = async () => {
+        try {
+            const response = await api.get('/api/social-login/microsoft/');
+            if (response.data && response.data.auth_url) {
+                window.location.href = response.data.auth_url;
+            } else {
+                toast.error('Failed to get Microsoft login URL');
+            }
+        } catch (error) {
+            console.error('Microsoft login error:', error);
+            toast.error('Failed to initiate Microsoft login');
+        }
+    };
+
     return (
       <div className="flex h-screen">
           {/* <!-- Left Pane --> */}
@@ -136,9 +164,27 @@ function Login({ onLogin }) {
                <div className="mt-4 text-sm text-gray-600 text-center">
         <p>{t('login.no_account_yet')} <a href="/register" className=" text-sky-800 hover:text-sky-700 hover:underline">{t('login.sign_up_here_button')}</a>
         </p>
-      </div>
+      
+             </div>
+             <div className="mt-4 flex flex-col gap-2">
+               <button
+                 onClick={handleGoogleLogin}
+                 className="flex items-center justify-center gap-2 bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 hover:bg-gray-100"
+               >
+                 <img src="/src/assets/google-icon.svg" alt="Google" className="w-5 h-5" />
+                 Login with Google
+               </button>
+               <button
+                 onClick={handleMicrosoftLogin}
+                 className="flex items-center justify-center gap-2 bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 hover:bg-gray-100"
+               >
+                 <img src="/src/assets/microsoft-icon.svg" alt="Microsoft" className="w-5 h-5" />
+                 Login with Microsoft
+               </button>
              </div>
            </div>
+           </div>
+
            </div>
     );
 }

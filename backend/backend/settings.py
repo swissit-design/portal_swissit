@@ -53,24 +53,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "api",
-    "ninja_extra",
-    "corsheaders",
-    "django_rest_passwordreset",
-    'django_extensions',
-    "rest_framework_simplejwt", # need to be installed for all languages locales packages
-
+    'django.contrib.sites',  # Required for allauth
+    'corsheaders',
+    'api',
+    'ninja',
+    'ninja_extra',
+    'ninja_jwt',
+    'django_rest_passwordreset',
+    'allauth',  # django-allauth
+    'allauth.account',  # django-allauth
+    'allauth.socialaccount',  # django-allauth
+    'allauth.socialaccount.providers.google',  # Google provider
+    'allauth.socialaccount.providers.microsoft',  # Microsoft provider
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Required for django-allauth
     'django.middleware.locale.LocaleMiddleware', # language detection based on user preferences or request headers
 ]
 
@@ -185,3 +192,51 @@ EMAIL_HOST_PASSWORD = os.getenv('ZOHO_PASSWORD')
 
 # REACT Full Domain used for email reset to REACT directly and not API
 REACT_DOMAIN = 'http://localhost:5173/'
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# django-allauth settings
+SITE_ID = 1
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+# Social Account Providers
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': getenv('GOOGLE_CLIENT_ID'),
+            'secret': getenv('GOOGLE_SECRET_ID'),
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    },
+    'microsoft': {
+        'APP': {
+            'client_id': 'YOUR_MICROSOFT_CLIENT_ID',
+            'secret': 'YOUR_MICROSOFT_CLIENT_SECRET',
+        },
+        'SCOPE': [
+            'user.read',
+            'email',
+            'profile',
+        ],
+    }
+}
+
+# Login/Logout URLs
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/accounts/logout/'
+LOGOUT_REDIRECT_URL = '/'

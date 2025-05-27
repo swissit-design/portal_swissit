@@ -1,0 +1,12 @@
+version: 3
+
+endpoints:
+  - name: backend
+    url: marten-current-dove.ngrok-free.app
+    upstream:
+      url: 8000
+
+  - name: frontend
+    # url: marten-current-dove.ngrok-free.app
+    upstream:
+      url: 5173
